@@ -7,6 +7,7 @@ import ErrorPage from "./views/Error/ErrorPage";
 import HomePage from "./views/Home/HomePage";
 import UserPage from "./views/Users/UserPage";
 import PostsPage from "./views/Posts/PostsPage";
+import UserDetailsPage from "./views/Users/UserDetails/UserDetailsPage";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path='login' element={<LoginPage/>}/>
           <Route path='register' element={<RegisterPage/>}/>
           <Route path='users' element={<UserPage/>}>
-              <Route path=':id' element={<div>UserDetails</div>}/>
+              <Route path=':id' element={<UserDetailsPage/>}/>
           </Route>
           <Route path='posts' element={<PostsPage/>}/>
           <Route path='*' element={<ErrorPage/>}/>
