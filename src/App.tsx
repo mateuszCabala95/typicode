@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import LoginPage from "./views/Login/LoginPage";
+import RegisterPage from "./views/Register/RegisterPage";
+import ErrorPage from "./views/Error/ErrorPage";
+import HomePage from "./views/Home/HomePage";
+import UserPage from "./views/Users/UserPage";
+import PostsPage from "./views/Posts/PostsPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route index element={<HomePage/>}/>
+          <Route path='login' element={<LoginPage/>}/>
+          <Route path='register' element={<RegisterPage/>}/>
+          <Route path='users' element={<UserPage/>}>
+              <Route path=':id' element={<div>UserDetails</div>}/>
+          </Route>
+          <Route path='posts' element={<PostsPage/>}/>
+          <Route path='*' element={<ErrorPage/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
